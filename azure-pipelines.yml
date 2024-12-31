@@ -8,30 +8,15 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-
-strategy:
-  matrix:
-    Python38:
-      python.version: '3.8'
-    Python39:
-      python.version: '3.9'
-    Python310:
-      python.version: '3.10'
-    Python311:
-      python.version: '3.11'
-
-steps:
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '$(python.version)'
-  displayName: 'Use Python $(python.version)'
-
-- script: |
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-  displayName: 'Install dependencies'
-
-- script: |
-    pip install pytest pytest-azurepipelines
-    pytest
-  displayName: 'pytest'
+stages
+  - Stage A
+    - Job 1
+      - Step 1.1
+      - Step 1.2
+      - ...
+    - Job 2
+      - Step 2.1
+      - Step 2.2 
+      - ...
+  - Stage B
+    - ...
