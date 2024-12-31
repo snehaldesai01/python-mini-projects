@@ -1,22 +1,18 @@
-# Python package
-# Create and test a Python package on multiple Python versions.
-# Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/python
-
 trigger:
-- master
+- main
 
-pool:
+pool: 
   vmImage: ubuntu-latest
-stages
-  - Stage A
-    - Job 1
-      - Step 1.1
-      - Step 1.2
-      - ...
-    - Job 2
-      - Step 2.1
-      - Step 2.2 
-      - ...
-  - Stage B
-    - ...
+
+stages:
+- stage: CI
+  jobs:
+  - job: CIWork
+    steps:
+    - script: "Do CI work"
+
+- stage: Test
+  jobs:
+  - job: TestWork
+    steps:
+    - script: "Do test work"
